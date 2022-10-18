@@ -3,15 +3,17 @@ using namespace std;
 
 #define ll long long
 
-void solve(){
-
-   cout << endl;
+void solve()
+{
+    cout << endl;
 }
 
-int main(){
+int main()
+{
     int t;
     cin >> t;
-    while(t--){
+    while (t--)
+    {
         solve();
     }
 }
