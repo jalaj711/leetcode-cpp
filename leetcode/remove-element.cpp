@@ -19,7 +19,7 @@ public:
             }
             pointer_two++;
         }
-        return pointer_one + 1;
+        return pointer_one;
     }
 };
 
