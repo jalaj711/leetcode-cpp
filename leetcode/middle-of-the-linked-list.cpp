@@ -20,3 +20,16 @@ public:
         return nodes[nodes.size() / 2];
     }
 };
+
+class Solution2 {
+    public:
+    ListNode* middleNode(ListNode* head) {
+        ListNode* elem = head;
+        ListNode* fast = head;
+        while(fast != NULL && fast -> next !== NULL && ((fast -> next) -> next) != NULL) {
+            elem = elem -> next;
+            fast = ((fast -> next) -> next);
+        }
+        return elem;
+    }
+};
