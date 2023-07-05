@@ -26,7 +26,7 @@ class Solution2 {
     ListNode* middleNode(ListNode* head) {
         ListNode* elem = head;
         ListNode* fast = head;
-        while(fast != NULL && fast -> next !== NULL && ((fast -> next) -> next) != NULL) {
+        while(fast != nullptr && fast -> next != nullptr && ((fast -> next) -> next) != nullptr) {
             elem = elem -> next;
             fast = ((fast -> next) -> next);
         }

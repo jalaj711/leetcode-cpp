@@ -12,12 +12,12 @@ public:
         {
             if (nums1[m] > nums2[n])
             {
-                nums1[m + n+1] = nums1[m];
+                nums1[m + n + 1] = nums1[m];
                 m--;
             }
             else
             {
-                nums1[m + n+1] = nums2[n];
+                nums1[m + n + 1] = nums2[n];
                 n--;
             }
         }
@@ -29,7 +29,8 @@ public:
     }
 };
 
-int main(){
+int main()
+{
     vector<int> q1 = {1, 3, 5, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     vector<int> q2 = {-1, 0, 2, 4, 6, 8, 10, 12, 13};
     Solution s;
