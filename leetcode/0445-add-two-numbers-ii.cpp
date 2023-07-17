@@ -13,16 +13,18 @@ class Solution
 private:
     ListNode *reverseLinkedList(ListNode *head)
     {
-        if (head == nullptr || head -> next == nullptr) return head;
+        if (head == nullptr || head->next == nullptr)
+            return head;
         ListNode *prev = nullptr;
-        ListNode *next = head -> next;
-        while (next != nullptr) {
-            head -> next = prev;
+        ListNode *next = head->next;
+        while (next != nullptr)
+        {
+            head->next = prev;
             prev = head;
             head = next;
-            next = next -> next;
+            next = next->next;
         }
-        head -> next = prev;
+        head->next = prev;
         return head;
     }
 
@@ -34,52 +36,76 @@ public:
         ListNode *ans = nullptr;
         ListNode *ansCurrDigit = nullptr;
         int carry = 0, sum;
-        while (l1 != nullptr && l2 != nullptr) {
-            sum = l1 -> val + l2 -> val + carry;
+        while (l1 != nullptr && l2 != nullptr)
+        {
+            sum = l1->val + l2->val + carry;
             carry = sum / 10;
             sum %= 10;
             ansCurrDigit = new ListNode(sum);
-            if (ans == nullptr) ans = ansCurrDigit;
-            else {
-                ansCurrDigit -> next = ans;
+            if (ans == nullptr)
+                ans = ansCurrDigit;
+            else
+            {
+                ansCurrDigit->next = ans;
                 ans = ansCurrDigit;
             };
 
-            l1 = l1 -> next;
-            l2 = l2 -> next;
+            l1 = l1->next;
+            l2 = l2->next;
         }
-        while (l1 != nullptr) {
-            sum = l1 -> val + carry;
+        while (l1 != nullptr)
+        {
+            sum = l1->val + carry;
             carry = sum / 10;
             sum %= 10;
             ansCurrDigit = new ListNode(sum);
-            if (ans == nullptr) ans = ansCurrDigit;
-            else {
-                ansCurrDigit -> next = ans;
+            if (ans == nullptr)
+                ans = ansCurrDigit;
+            else
+            {
+                ansCurrDigit->next = ans;
                 ans = ansCurrDigit;
             };
 
-            l1 = l1 -> next;
+            l1 = l1->next;
         }
-        while (l2 != nullptr) {
-            sum = l2 -> val + carry;
+        while (l2 != nullptr)
+        {
+            sum = l2->val + carry;
             carry = sum / 10;
             sum %= 10;
             ansCurrDigit = new ListNode(sum);
-            if (ans == nullptr) ans = ansCurrDigit;
-            else {
-                ansCurrDigit -> next = ans;
+            if (ans == nullptr)
+                ans = ansCurrDigit;
+            else
+            {
+                ansCurrDigit->next = ans;
                 ans = ansCurrDigit;
             };
 
-            l2 = l2 -> next;
+            l2 = l2->next;
         }
+
+        if (carry)
+        {
+
+            ansCurrDigit = new ListNode(carry);
+            if (ans == nullptr)
+                ans = ansCurrDigit;
+            else
+            {
+                ansCurrDigit->next = ans;
+                ans = ansCurrDigit;
+            };
+        }
+
         return ans;
     }
 };
 
-int main() {
-    ListNode *l1 = new ListNode(6, new ListNode(5));//, new ListNode(2)));
+int main()
+{
+    ListNode *l1 = new ListNode(6, new ListNode(5)); //, new ListNode(2)));
     ListNode *l2 = new ListNode(1, new ListNode(4, new ListNode(7)));
     Solution s;
     s.addTwoNumbers(l1, l2);
