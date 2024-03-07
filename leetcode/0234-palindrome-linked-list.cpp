@@ -18,33 +18,25 @@ class Solution {
 public:
     bool isPalindrome(ListNode* head) {
         if (head == nullptr || head -> next == nullptr) return true;
-        ListNode *slow = head, *fast = head;
+        ListNode *slow = head, *fast = head, *next = head->next, *prev = nullptr;
 
         while(fast -> next != nullptr && (fast -> next) -> next != nullptr) {
             fast = (fast -> next) -> next;
+            slow -> next = prev;
+            prev = slow;
+            slow = next;
+            next = slow -> next;
+        }
+        slow -> next = prev;
+
+        if (fast -> next == nullptr && fast != head) {
+            slow = prev;
+        }
+
+        while (slow != nullptr && next != nullptr) {
+            if (slow -> val != next -> val) return false;
             slow = slow -> next;
-        }
-
-        bool isOdd = fast -> next == nullptr;
-
-        ListNode *lista = head;
-        ListNode *listb = slow -> next;
-
-        ListNode *prev = nullptr;
-        ListNode *next = head -> next;
-
-        while(isOdd ? lista != slow : prev != slow) {
-            lista -> next = prev;
-            prev = lista;
-            lista = next;
             next = next -> next;
-        }
-        lista = prev;
-
-        while (lista != nullptr && listb != nullptr) {
-            if (lista -> val != listb -> val) return false;
-            lista = lista -> next;
-            listb = listb -> next;
         }
 
         return true;
