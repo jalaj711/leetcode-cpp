@@ -1,7 +1,9 @@
 #include<vector>
 using namespace std;
 
-class Solution {
+/*
+ * Solution 1
+ * class Solution {
 private:
     int recur(int m, int n, int i, int j, vector<vector<int>>&dp) {
         if (i==m-1&&j==n-1) return 1;
@@ -14,5 +16,21 @@ public:
     int uniquePaths(int m, int n) {
         vector<vector<int>> dp (m, vector<int>(n, -1));
         return recur(m, n, 0, 0, dp);
+    }
+};*/
+
+// Solution 2: Space optimisation
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        if (m==1 || n==1) return 1;
+        vector<int> dp (n, 1);
+        dp[n-1] = 0;
+        for (int i = m-2;i>=0;i--) {
+            dp[n-1] = 1;
+            for (int j = n-2;j>=0;j--)
+                dp[j] += dp[j+1];
+        }
+        return dp[0];
     }
 };
